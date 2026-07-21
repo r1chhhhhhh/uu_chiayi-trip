@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>嘉義。兩天一夜｜7/25—7/26</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root{
+  --paper:#F4EEDD;
+  --paper-2:#ECE3CB;
+  --ink:#2B2015;
+  --ink-soft:#6B5D48;
+  --wood:#8B4A2B;
+  --wood-dark:#5B2F16;
+  --forest:#3F6B4A;
+  --forest-dark:#2A4A33;
+  --gold:#D89B3C;
+  --gold-soft:#F0D6A0;
+  --coral:#C1443B;
+  --night:#141C30;
+  --night-2:#1E2A46;
+  --flare:#FF9A3C;
+  --line: rgba(43,32,21,0.16);
+  --shadow: 0 10px 26px -14px rgba(43,32,21,0.35);
+  --spring: cubic-bezier(0.34,1.56,0.64,1);
+  --glide: cubic-bezier(0.16,1,0.3,1);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Noto Sans TC',sans-serif;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    radial-gradient(rgba(43,32,21,0.035) 1px, transparent 1px);
+  background-size:14px 14px;
+  pointer-events:none;
+  z-index:0;
+}
+
+h1,h2,h3{ font-family:'Noto Serif TC',serif; margin:0; }
+a{ color:inherit; }
+.mono{ font-family:'JetBrains Mono',monospace; letter-spacing:0.02em; }
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  padding: 64px 24px 56px;
+  text-align:center;
+  overflow:hidden;
+  border-bottom: 2px dashed var(--line);
+}
+.hero .eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.78rem; letter-spacing:0.18em;
+  color:var(--wood-dark);
+  background:var(--gold-soft);
+  border:1px solid var(--gold);
+  padding:6px 14px;
+  border-radius:100px;
+  margin-bottom:22px;
+}
+.hero .eyebrow .dot{
+  width:6px;height:6px;border-radius:50%;background:var(--coral);
+  animation: blink 1.6s steps(1) infinite;
+}
+@keyframes blink{ 50%{ opacity:0.15; } }
+
+.hero h1{
+  font-size:clamp(2.2rem, 6vw, 3.6rem);
+  font-weight:900;
+  color:var(--wood-dark);
+  line-height:1.25;
+}
+.hero h1 .accent{ color:var(--forest); }
+.hero p.sub{
+  max-width:520px; margin:16px auto 0;
+  color:var(--ink-soft); font-size:1.02rem;
+}
+
+.ticket-strip{
+  margin:36px auto 0;
+  max-width:640px;
+  display:flex;
+  border:1.5px solid var(--wood);
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff8ea;
+  box-shadow:var(--shadow);
+  opacity:0; transform:translateY(14px);
+  animation: rise .6s var(--glide) .15s forwards;
+}
+@keyframes rise{ to{ opacity:1; transform:translateY(0);} }
+.ticket-strip .seg{
+  flex:1; padding:16px 14px; position:relative;
+}
+.ticket-strip .seg + .seg{ border-left:1.5px dashed var(--line); }
+.ticket-strip .seg::before{
+  content:''; position:absolute; top:-8px; left:-8px;
+  width:16px; height:16px; border-radius:50%;
+  background:var(--paper);
+  display: none;
+}
+.ticket-strip .label{
+  font-size:0.68rem; letter-spacing:0.12em; color:var(--ink-soft);
+  text-transform:uppercase; margin-bottom:4px;
+}
+.ticket-strip .value{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:1.05rem; color:var(--wood-dark); }
+
+/* ---------- DAY TABS (glide pill) ---------- */
+.day-nav-wrap{
+  position:sticky; top:0; z-index:50;
+  display:flex; justify-content:center;
+  padding:14px 16px;
+  background:linear-gradient(var(--paper) 78%, transparent);
+  backdrop-filter: blur(2px);
+}
+.day-tabs{
+  position:relative;
+  display:inline-flex;
+  background:#fff8ea;
+  border:1.5px solid var(--wood);
+  border-radius:100px;
+  padding:5px;
+  gap:4px;
+  box-shadow:var(--shadow);
+}
+.day-tabs .pill{
+  position:absolute; top:5px; left:5px;
+  height:calc(100% - 10px);
+  border-radius:100px;
+  background:var(--wood);
+  transition: left 0.45s var(--glide), width 0.45s var(--glide);
+  z-index:0;
+}
+.day-tabs button{
+  position:relative; z-index:1;
+  border:none; background:transparent;
+  font-family:'Noto Serif TC',serif;
+  font-weight:700; font-size:0.92rem;
+  color:var(--wood-dark);
+  padding:10px 22px;
+  border-radius:100px;
+  cursor:pointer;
+  transition: color 0.3s ease;
+  white-space:nowrap;
+}
+.day-tabs button.active{ color:#fff8ea; }
+.day-tabs button small{ display:block; font-family:'JetBrains Mono',monospace; font-weight:400; font-size:0.68rem; opacity:0.75; margin-top:2px;}
+
+/* ---------- LAYOUT ---------- */
+main{ max-width:760px; margin:0 auto; padding: 8px 20px 40px; position:relative; z-index:1;}
+.day-panel{ display:none; }
+.day-panel.active{ display:block; animation: fadein .5s var(--glide); }
+@keyframes fadein{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+.day-heading{
+  margin: 30px 0 18px;
+  display:flex; align-items:baseline; gap:12px;
+}
+.day-heading h2{ font-size:1.5rem; color:var(--wood-dark); }
+.day-heading .date{ font-family:'JetBrains Mono',monospace; color:var(--ink-soft); font-size:0.88rem; }
+
+/* accommodation card */
+.stay-card{
+  display:flex; gap:16px; align-items:flex-start;
+  background: linear-gradient(135deg, var(--forest), var(--forest-dark));
+  color:#f2ede0;
+  border-radius:18px;
+  padding:20px 22px;
+  margin-bottom:26px;
+  box-shadow: var(--shadow);
+  opacity:0; transform:translateY(16px);
+}
+.stay-card.in{ animation: rise .6s var(--glide) forwards; }
+.stay-card .icon{ font-size:1.6rem; flex-shrink:0; margin-top:2px;}
+.stay-card h3{ color:#fff; font-size:1.1rem; margin-bottom:4px;}
+.stay-card p{ margin:0; font-size:0.9rem; opacity:0.92;}
+.stay-card a.map-link{
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:10px; font-size:0.82rem;
+  color:var(--gold-soft); text-decoration:none;
+  border-bottom:1px solid rgba(240,214,160,0.5);
+  transition: transform 0.15s ease-out;
+}
+.stay-card a.map-link:hover{ transform: translateX(3px); }
+
+.confirm-card{
+  display:flex; gap:16px; align-items:flex-start;
+  background: linear-gradient(135deg, var(--gold), #B97A2A);
+  color:#3A2308;
+  border-radius:18px;
+  padding:20px 22px;
+  margin: 8px 0 20px;
+  box-shadow: var(--shadow);
+  opacity:0; transform:translateY(16px);
+}
+.confirm-card.in{ animation: rise .6s var(--glide) forwards; }
+.confirm-card .icon{ font-size:1.6rem; flex-shrink:0; margin-top:2px;}
+.confirm-card .tag{
+  display:inline-block; font-family:'JetBrains Mono',monospace;
+  font-size:0.68rem; letter-spacing:0.1em;
+  background:rgba(58,35,8,0.15); border:1px solid rgba(58,35,8,0.3);
+  padding:2px 9px; border-radius:100px; margin-bottom:6px;
+}
+.confirm-card h3{ color:#3A2308; font-size:1.1rem; margin-bottom:4px;}
+.confirm-card p{ margin:2px 0 0; font-size:0.9rem; opacity:0.92;}
+.confirm-card a.map-link{
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:10px; font-size:0.82rem;
+  color:#3A2308; text-decoration:none;
+  border-bottom:1px solid rgba(58,35,8,0.45);
+  transition: transform 0.15s ease-out;
+}
+.confirm-card a.map-link:hover{ transform: translateX(3px); }
+
+.park-card{
+  background:#fff8ea;
+  border:1.5px solid var(--line);
+  border-radius:16px;
+  padding:6px 18px 4px;
+  margin-bottom:22px;
+}
+.park-item{
+  padding:14px 0;
+  opacity:0; transform:translateY(12px);
+}
+.park-item.in{ animation: rise .55s var(--glide) forwards; }
+.park-item + .park-item{ border-top:1px dashed var(--line); }
+.park-head{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  margin-bottom:4px;
+}
+.park-name{ font-weight:700; font-size:0.95rem; color:var(--wood-dark); }
+.park-tag{
+  font-family:'JetBrains Mono',monospace; font-size:0.68rem;
+  background:var(--gold-soft); border:1px solid var(--gold);
+  color:var(--wood-dark); padding:2px 9px; border-radius:100px;
+}
+.park-card p{ margin:4px 0 6px; font-size:0.86rem; color:var(--ink-soft); }
+.park-card .map-link{
+  display:inline-flex; align-items:center; gap:5px;
+  color:var(--wood); font-weight:600; text-decoration:none;
+  font-size:0.84rem; border-bottom:1px solid var(--wood);
+  transition: transform 0.15s ease-out;
+}
+.park-card .map-link:hover{ transform: translateX(3px); }
+.park-note{
+  font-size:0.8rem; color:var(--coral);
+  padding:12px 0 14px; border-top:1px dashed var(--line);
+}
+
+/* timeline */
+.timeline{ position:relative; padding-left:26px; margin-bottom:8px; }
+.timeline::before{
+  content:''; position:absolute; left:6px; top:6px; bottom:6px;
+  width:2px; background: repeating-linear-gradient(var(--wood), var(--wood) 6px, transparent 6px, transparent 12px);
+}
+.stop{
+  position:relative;
+  margin-bottom:14px;
+  opacity:0; transform:translateY(14px);
+}
+.stop.in{ animation: rise .55s var(--glide) forwards; }
+.stop::before{
+  content:''; position:absolute; left:-26px; top:18px;
+  width:11px; height:11px; border-radius:50%;
+  background: var(--paper); border:2.5px solid var(--wood);
+  transition: transform 0.35s var(--spring), background 0.25s ease;
+}
+.stop.open::before{ background:var(--wood); transform:scale(1.15); }
+
+.stop-header{
+  cursor:pointer;
+  display:flex; align-items:center; gap:12px;
+  background:#fff8ea;
+  border:1.5px solid var(--line);
+  border-radius:14px;
+  padding:13px 16px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.stop-header:hover{ border-color:var(--wood); box-shadow:var(--shadow); }
+.stop-header .time{
+  font-family:'JetBrains Mono',monospace; font-weight:700;
+  font-size:0.86rem; color:var(--wood); flex-shrink:0; min-width:52px;
+}
+.stop-header .title{ font-weight:600; font-size:0.98rem; flex:1; }
+.stop-header .emoji{ font-size:1.25rem; flex-shrink:0; }
+.stop-header .chev{
+  color:var(--ink-soft); transition: transform 0.35s var(--spring);
+  flex-shrink:0;
+}
+.stop.open .stop-header .chev{ transform: rotate(180deg); }
+
+.stop-body{
+  max-height:0; overflow:hidden;
+  transition: max-height 0.45s var(--glide);
+  padding-left: 16px;
+}
+.stop.open .stop-body{ max-height:520px; }
+.stop-body-inner{
+  padding:14px 16px 4px;
+  font-size:0.9rem; color:var(--ink-soft);
+}
+.stop-body-inner .tip{
+  background: var(--gold-soft);
+  border-left:3px solid var(--gold);
+  padding:8px 12px; border-radius:8px;
+  margin-top:10px; font-size:0.85rem; color:var(--wood-dark);
+}
+.stop-body-inner a.map-link{
+  display:inline-flex; align-items:center; gap:5px;
+  margin-top:10px; color:var(--wood); font-weight:600;
+  text-decoration:none; font-size:0.85rem;
+  border-bottom:1px solid var(--wood);
+}
+
+/* section divider */
+.section-note{
+  margin:24px 0 16px; padding-left:2px;
+  font-size:0.88rem; color:var(--ink-soft);
+  display:flex; align-items:center; gap:8px;
+}
+.section-note::before{ content:'✂️'; font-size:0.9rem; }
+
+/* ---------- FOOD CHIPS ---------- */
+.food-block{
+  background:#fff8ea;
+  border:1.5px solid var(--line);
+  border-radius:16px;
+  padding:18px 18px 16px;
+  margin: 8px 0 20px 26px;
+}
+.food-block-head{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom:12px;
+}
+.food-block-head h4{
+  font-family:'Noto Serif TC',serif; font-size:0.98rem; color:var(--wood-dark);
+  display:flex; align-items:center; gap:6px;
+}
+.food-counter{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.76rem; color:var(--wood);
+  background:var(--gold-soft);
+  border:1px solid var(--gold);
+  padding:3px 10px; border-radius:100px;
+  transition: transform 0.3s var(--spring);
+}
+.food-counter.bump{ transform:scale(1.18); }
+
+.chip-row{ display:flex; flex-wrap:wrap; gap:9px; }
+.chip{
+  display:inline-flex; align-items:center; gap:7px;
+  padding:8px 10px 8px 12px;
+  border-radius:100px;
+  border:1.5px solid var(--line);
+  background:var(--paper);
+  font-size:0.86rem;
+  cursor:pointer;
+  user-select:none;
+  transition: transform 0.3s var(--spring), background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.chip .heart{ font-size:0.82rem; opacity:0.35; transition: opacity 0.2s ease, transform 0.35s var(--spring);}
+.chip.on{
+  background:var(--wood); border-color:var(--wood); color:#fff8ea;
+  transform:scale(1.06);
+}
+.chip.on .heart{ opacity:1; transform:scale(1.25); }
+.chip.pop{ transform:scale(1.16); }
+.chip .pin{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:22px; height:22px; border-radius:50%;
+  font-size:0.78rem; text-decoration:none; color:inherit;
+  opacity:0.55;
+  transition: opacity 0.2s ease, transform 0.15s ease-out, background 0.2s ease;
+}
+.chip .pin:hover{ opacity:1; background:rgba(0,0,0,0.08); transform:scale(1.1); }
+.chip.on .pin:hover{ background:rgba(255,255,255,0.18); }
+
+/* ---------- FIREWORKS SPECIAL CARD ---------- */
+.fire-card{
+  position:relative;
+  margin: 30px 0 10px;
+  border-radius:22px;
+  overflow:hidden;
+  background: radial-gradient(120% 140% at 50% 0%, var(--night-2), var(--night) 70%);
+  color:#EFE7D3;
+  padding: 30px 24px 26px;
+  text-align:center;
+  box-shadow: 0 20px 50px -20px rgba(20,28,48,0.6);
+}
+.fire-card .glow{
+  position:absolute; left:50%; top:18%;
+  width:180px; height:180px; border-radius:50%;
+  transform:translate(-50%,-50%);
+  background: radial-gradient(circle, rgba(255,154,60,0.55), transparent 70%);
+  animation: breathe 4.2s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes breathe{
+  0%,100%{ transform:translate(-50%,-50%) scale(0.85); opacity:0.6; }
+  50%{ transform:translate(-50%,-50%) scale(1.25); opacity:1; }
+}
+.fire-card .ring{
+  position:absolute; left:50%; top:18%;
+  width:60px; height:60px; border-radius:50%;
+  transform:translate(-50%,-50%);
+  border:2px solid var(--flare);
+  animation: ping 2.6s cubic-bezier(0,0.4,0.2,1) infinite;
+  pointer-events:none;
+}
+.fire-card .ring.d2{ animation-delay: 1.3s; }
+@keyframes ping{
+  0%{ transform:translate(-50%,-50%) scale(0.5); opacity:0.8; }
+  100%{ transform:translate(-50%,-50%) scale(3.6); opacity:0; }
+}
+.fire-card .badge{
+  position:relative; z-index:2;
+  display:inline-block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.72rem; letter-spacing:0.16em;
+  color:var(--flare);
+  border:1px solid var(--flare);
+  padding:5px 14px; border-radius:100px;
+  margin-bottom:14px;
+}
+.fire-card h3{
+  position:relative; z-index:2;
+  font-size:clamp(1.5rem,4vw,2rem); color:#fff; margin-bottom:8px;
+}
+.fire-card .time-big{
+  position:relative; z-index:2;
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(2.4rem,7vw,3.4rem);
+  font-weight:700; color:var(--flare);
+  margin: 6px 0 10px;
+  text-shadow: 0 0 24px rgba(255,154,60,0.5);
+}
+.fire-card p{ position:relative; z-index:2; max-width:440px; margin:0 auto; color:#cfd3de; font-size:0.92rem; }
+.fire-card .facts{
+  position:relative; z-index:2;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+  margin-top:18px;
+}
+.fire-card .facts span{
+  font-size:0.78rem; background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.18);
+  padding:6px 12px; border-radius:100px; color:#EFE7D3;
+}
+.fire-card a.map-link{
+  position:relative; z-index:2;
+  display:inline-flex; align-items:center; gap:6px;
+  margin-top:18px; padding:10px 20px;
+  background:var(--flare); color:var(--night);
+  font-weight:700; text-decoration:none; border-radius:100px;
+  font-size:0.86rem;
+  transition: transform 0.12s ease-out, box-shadow 0.2s ease;
+}
+.fire-card a.map-link:active{ transform:scale(0.94); }
+
+.fire-card .note{
+  position:relative; z-index:2;
+  margin-top:16px; font-size:0.78rem; color:#9aa2b5;
+  border-top:1px dashed rgba(255,255,255,0.15); padding-top:14px;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  max-width:760px; margin:36px auto 60px; padding:0 20px;
+  position:relative; z-index:1;
+}
+.info-card{
+  background:#fff8ea; border:1.5px dashed var(--wood);
+  border-radius:16px; padding:18px 20px; margin-bottom:14px;
+}
+.info-card h4{
+  font-family:'Noto Serif TC',serif; color:var(--wood-dark); font-size:0.98rem;
+  margin-bottom:8px; display:flex; align-items:center; gap:6px;
+}
+.info-card ul{ margin:0; padding-left:18px; font-size:0.87rem; color:var(--ink-soft); }
+.info-card li{ margin-bottom:5px; }
+.credit{
+  text-align:center; font-size:0.78rem; color:var(--ink-soft);
+  margin-top:24px; opacity:0.75;
+}
+
+/* FAB */
+.fab{
+  position:fixed; right:18px; bottom:18px; z-index:60;
+  width:46px; height:46px; border-radius:50%;
+  background:var(--wood); color:#fff8ea; border:none;
+  font-size:1.1rem; cursor:pointer;
+  box-shadow: 0 8px 20px -6px rgba(43,32,21,0.45);
+  transition: transform 0.5s var(--spring);
+}
+.fab:active{ transform:scale(0.88); }
+
+@media (max-width:480px){
+  .hero{ padding:48px 16px 40px; }
+  .ticket-strip{ flex-direction:column; }
+  .ticket-strip .seg + .seg{ border-left:none; border-top:1.5px dashed var(--line); }
+  .food-block{ margin-left:14px; padding:14px; }
+  .timeline{ padding-left:20px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="eyebrow"><span class="dot"></span> CHIAYI · 兩天一夜</span>
+  <h1>慢慢晃嘉義，<br class="hide-desktop"><span class="accent">晚上一起去看煙火</span></h1>
+  <p class="sub">從檜木老屋走到火雞肉飯攤，最後在東石漁港的海上煙火下收尾。想吃什麼你決定，我來開車 🚗</p>
+
+  <div class="ticket-strip">
+    <div class="seg">
+      <div class="label">出發</div>
+      <div class="value">7 / 25（六）</div>
+    </div>
+    <div class="seg">
+      <div class="label">賦歸</div>
+      <div class="value">7 / 26（日）</div>
+    </div>
+    <div class="seg">
+      <div class="label">住宿</div>
+      <div class="value" style="font-size:0.92rem;">葉綠宿．漫漫回嘉</div>
+    </div>
+  </div>
+</header>
+
+<div class="day-nav-wrap">
+  <div class="day-tabs" id="dayTabs">
+    <span class="pill" id="tabPill"></span>
+    <button class="active" data-day="day1">DAY 1<small>檜意．夜市</small></button>
+    <button data-day="day2">DAY 2<small>湖光．煙火</small></button>
+  </div>
+</div>
+
+<main>
+
+  <!-- ================= DAY 1 ================= -->
+  <section class="day-panel active" id="day1">
+    <div class="day-heading">
+      <h2>Day 1 · 初來嘉義</h2>
+      <span class="date mono">7/25（六）</span>
+    </div>
+
+    <div class="stay-card">
+      <div class="icon">🏨</div>
+      <div>
+        <h3>Check-in｜葉綠宿．漫漫回嘉</h3>
+        <p>嘉義市西區民生北路175、177號｜入住 16:00 起｜車位有限、建議先致電預約（05-222-3366）</p>
+        <a class="map-link" href="https://www.google.com/maps/place/%E8%91%89%E7%B6%A0%E5%AE%BF%E3%83%BB%E6%BC%AB%E6%BC%AB%E5%9B%9E%E5%98%89+%E5%98%89%E7%BE%A9%E9%A4%A8/data=!4m2!3m1!1s0x346e95bcbf8b969f:0x71f8b197ff2c99d8" target="_blank" rel="noopener">📍 在 Google 地圖開啟</a>
+      </div>
+    </div>
+
+    <div class="section-note">飯店沒訂到車位・附近停車場（由近到遠）</div>
+    <div class="park-card">
+      <div class="park-item">
+        <div class="park-head">
+          <span class="park-name">🥇 嘉義市公有停車場（民生北路）</span>
+          <span class="park-tag">離飯店最近・同一條路</span>
+        </div>
+        <p>嘉義市西區民生北路1號｜跟飯店同一條路上，走過去最近，不用穿越馬路繞路，公有收費停車場，隨到隨停免預約。</p>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%98%89%E7%BE%A9%E5%B8%82%E5%85%AC%E6%9C%89%E5%81%9C%E8%BB%8A%E5%A0%B4%20%E6%B0%91%E7%94%9F%E5%8C%97%E8%B7%AF1%E8%99%9F" target="_blank" rel="noopener">📍 在 Google 地圖開啟</a>
+      </div>
+      <div class="park-item">
+        <div class="park-head">
+          <span class="park-name">🅿️ 火車站前停車場（公有）</span>
+          <span class="park-tag">約8分鐘走到飯店</span>
+        </div>
+        <p>嘉義市西區林森西路526號｜計時20元／小時｜96個汽車位，順路就在檜意森活村、森林之歌附近，很好排。</p>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%81%AB%E8%BB%8A%E7%AB%99%E5%89%8D%E5%81%9C%E8%BB%8A%E5%A0%B4%20%E5%98%89%E7%BE%A9%E5%B8%82%E6%9E%97%E6%A3%AE%E8%A5%BF%E8%B7%AF526%E8%99%9F" target="_blank" rel="noopener">📍 在 Google 地圖開啟</a>
+      </div>
+      <div class="park-item">
+        <div class="park-head">
+          <span class="park-name">🅿️ Times 嘉義民族路停車場</span>
+          <span class="park-tag">離文化路夜市近</span>
+        </div>
+        <p>嘉義市東區民族路63號旁｜免預約、隨到隨停，逛夜市、吃晚餐都方便，走回飯店約10分鐘。</p>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Times%E5%98%89%E7%BE%A9%E6%B0%91%E6%97%8F%E8%B7%AF%E5%81%9C%E8%BB%8A%E5%A0%B4" target="_blank" rel="noopener">📍 在 Google 地圖開啟</a>
+      </div>
+      <div class="park-item">
+        <div class="park-head">
+          <span class="park-name">🅿️ 西市場地下／立體停車場</span>
+          <span class="park-tag">車位多、市府推薦</span>
+        </div>
+        <p>B1入口在忠義街、3–4樓入口在國華街，市政府建議逛文化路夜市停這裡，車位比路邊格多、動線也清楚。</p>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E5%B8%82%E5%A0%B4%E5%81%9C%E8%BB%8A%E5%A0%B4%20%E5%98%89%E7%BE%A9%E5%B8%82" target="_blank" rel="noopener">📍 在 Google 地圖開啟</a>
+      </div>
+      <div class="park-note">⚠️ 假日晚上18:00–23:00文化路（中正路至民族路段）會封路管制、禁止汽機車進入，記得提早找地方停好，用走的逛夜市。</div>
+    </div>
+
+    <div class="timeline" id="timeline1">
+
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">14:30</span>
+          <span class="emoji">🧳</span>
+          <span class="title">抵達嘉義・寄放行李</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          先到飯店放行李、稍作休息。飯店樓下就是「櫻桃計劃」咖啡館，可以先喝杯咖啡醒一下腦。
+          <div class="tip">💡 如果太早到、房間還沒好，行李可以先寄放櫃檯，直接出發去景點。</div>
+        </div></div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">15:15</span>
+          <span class="emoji">🌲</span>
+          <span class="title">檜意森活村</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          全台保存最完整的日式檜木宿舍群，前身是阿里山林業員工宿舍，免門票。文創小店、交趾陶、木香庭園，很適合慢慢散步拍照，電影《KANO》也在這取景。
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%AA%9C%E6%84%8F%E6%A3%AE%E6%B4%BB%E6%9D%91" target="_blank" rel="noopener">📍 嘉義市東區林森東路1號</a>
+        </div></div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">16:30</span>
+          <span class="emoji">🎋</span>
+          <span class="title">森林之歌 + 沈睡森林</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          就在檜意森活村附近，走路可以順路串起來。「森林之歌」是14公尺高的巨型木造裝置藝術，傍晚17:30後會點燈；旁邊的「沈睡森林」有一群療癒系動物裝置，很好拍。
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%A3%AE%E6%9E%97%E4%B9%8B%E6%AD%8C%20%E5%98%89%E7%BE%A9" target="_blank" rel="noopener">📍 文化路林森西路地下道旁</a>
+        </div></div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">18:00</span>
+          <span class="emoji">🍽️</span>
+          <span class="title">晚餐時間・口袋名單挑一家</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          從你 Google 地圖存的口袋名單裡挑了幾家晚餐候選，都在市區不會太遠，往下滑選單，讓她點想吃的～
+        </div></div>
+      </div>
+
+    </div>
+
+    <div class="section-note">晚餐候選清單（你收藏的口袋名單）</div>
+    <div class="food-block" data-key="d1dinner">
+      <div class="food-block-head">
+        <h4>🍽️ 晚餐・正餐</h4>
+        <span class="food-counter mono">已選 0</span>
+      </div>
+      <div class="chip-row">
+        <div class="chip"><span class="heart">❤️</span>慶昇小館<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E6%85%B6%E6%98%87%E5%B0%8F%E9%A4%A8/data=!4m2!3m1!1s0x346e942efef31e57:0x4a706eddfe1e548d">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>一點散漫·小料亭／1.FOODNIA<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E4%B8%80%E9%BB%9E%E6%95%A3%E6%BC%AB%C2%B7%E5%B0%8F%E6%96%99%E4%BA%AD+%2F+1.FOODNIA+%E5%98%89%E7%BE%A9%E5%89%B5%E5%A7%8B%E5%BA%97/data=!4m2!3m1!1s0x346e955fcced8d9f:0x36479b012a9dd861">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>隱燃燒肉丼食堂（沒有訂位）<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E9%9A%B1%E7%87%83%E7%87%92%E8%82%89%E4%B8%BC%E9%A3%9F%E5%A0%82+%EF%BD%9C+%E6%B2%92%E6%9C%89%E8%A8%82%E4%BD%8D/data=!4m2!3m1!1s0x346e9431d82d098f:0x3dcc6ecf4c562904">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>好食實驗所<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E5%A5%BD%E9%A3%9F%E5%AF%A6%E9%A9%97%E6%89%80/data=!4m2!3m1!1s0x346e95006ab34a83:0xe5dc941d00de69c8">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>蘭苑<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E8%98%AD%E8%8B%91/data=!4m2!3m1!1s0x346e95007bf01e33:0xa1ed22c344358394">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>泊港漁市場<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E6%B3%8A%E6%B8%AF%E6%BC%81%E5%B8%82%E5%A0%B4/data=!4m2!3m1!1s0x34e56a2ada155555:0x37c012fbd63949a2">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>Lavaqua izakaya &amp; wine餐酒館<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Lavaqua+izakaya+%26+wine%E9%A4%90%E9%85%92%E9%A4%A8/data=!4m2!3m1!1s0x346e0500189a6943:0x1cc4187ce13555b">📍</a></div>
+      </div>
+    </div>
+
+    <div class="food-block" data-key="d1late">
+      <div class="food-block-head">
+        <h4>🌙 宵夜・小吃・手搖</h4>
+        <span class="food-counter mono">已選 0</span>
+      </div>
+      <div class="chip-row">
+        <div class="chip"><span class="heart">❤️</span>豆豆 小籠湯包、蒸餃<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E8%B1%86%E8%B1%86+%E5%B0%8F%E7%B1%A0%E6%B9%AF%E5%8C%85%E3%80%81%E8%92%B8%E9%A4%83%EF%BC%88%E5%85%A7%E7%94%A8%E6%94%B6%E5%AE%A2%E5%83%85%E8%87%B320%EF%BC%9A10%EF%BC%8C%E5%A4%96%E5%B8%B6%E8%87%B320%EF%BC%9A30%EF%BC%89/data=!4m2!3m1!1s0x346e9446933524f7:0xaa43742f4d36f55f">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>合平鴨肉羹<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E5%90%88%E5%B9%B3%E9%B4%A8%E8%82%89%E7%BE%B9/data=!4m2!3m1!1s0x346e9500eef5964b:0xececb1f2caa47293">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>正老牌・草魚粥／草魚湯<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E6%AD%A3%E8%80%81%E7%89%8C-%E8%8D%89%E9%AD%9A%E7%B2%A5%EF%BC%8C%E8%8D%89%E9%AD%9A%E6%B9%AF/data=!4m2!3m1!1s0x346e969e95782ee5:0x39f9332737da42b2">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>東和香腸店（建成街）<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E6%9D%B1%E5%92%8C%E9%A6%99%E8%85%B8%E5%BA%97%EF%BC%88%E5%BB%BA%E6%88%90%E8%A1%97%EF%BC%89/data=!4m2!3m1!1s0x346e9420ff3da991:0xc9fb77be51725ca3">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>阿宏師火雞肉飯宵夜幫吳鳳店<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E9%98%BF%E5%AE%8F%E5%B8%AB%E7%81%AB%E9%9B%9E%E8%82%89%E9%A3%AF%E5%AE%B5%E5%A4%9C%E5%B9%AB%E5%90%B3%E9%B3%B3%E5%BA%97/data=!4m2!3m1!1s0x346e95617c038563:0xeefcf0835491f57d">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>張家冰店<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E5%BC%B5%E5%AE%B6%E5%86%B0%E5%BA%97/data=!4m2!3m1!1s0x346e95d2db9c7a49:0xbeec995653652a2">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>茗苑鮮喝茶茶舖<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E8%8C%97%E8%8B%91%E9%AE%AE%E5%96%9D%E8%8C%B6%E8%8C%B6%E8%88%96/data=!4m2!3m1!1s0x346e0484d649440f:0x3f135460aad3db58">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>京製茶 Kyo Cha<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E4%BA%AC%E8%A3%BD%E8%8C%B6+Kyo+Cha%C2%B7%E6%89%8B%E5%88%B7%E8%8C%B6%E5%B0%88%E8%B3%A3/data=!4m2!3m1!1s0x346e95a4bbd28677:0x2c5746e1246e0443">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>嘉義新庄紅茶<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E5%98%89%E7%BE%A9%E6%96%B0%E5%BA%84%E7%B4%85%E8%8C%B6/data=!4m2!3m1!1s0x346e959a42c056c3:0x5b181d8a6964221">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>Koffee Suika 西瓜珈琲<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/Koffee+Suika+%E8%A5%BF%E7%93%9C%E7%8F%88%E7%90%B2/data=!4m2!3m1!1s0x346e95001efc2567:0x6dd450d7f414e16b">📍</a></div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">19:30</span>
+          <span class="emoji">💦</span>
+          <span class="title">噴水圓環・夜市逛街</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          飯後沿文化路慢慢逛，噴水圓環晚上打燈很好拍，附近有很多甜點、飲料攤，找個地方坐下來聊聊天再走回飯店。
+        </div></div>
+      </div>
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">21:30</span>
+          <span class="emoji">🛏️</span>
+          <span class="title">走回飯店・早點休息</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          明天要開車去東石看煙火，行程比較滿，建議別逛太晚，養足精神。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DAY 2 ================= -->
+  <section class="day-panel" id="day2">
+    <div class="day-heading">
+      <h2>Day 2 · 湖光與煙火</h2>
+      <span class="date mono">7/26（日）</span>
+    </div>
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">10:00</span>
+          <span class="emoji">😴</span>
+          <span class="title">睡到自然醒・悠哉準備</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          不用趕，昨天走了不少路，今天慢慢來就好。起床後把行李收一收，準備出門吃早午餐。
+        </div></div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">10:30</span>
+          <span class="emoji">🧳</span>
+          <span class="title">回飯店 Check-out</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          退房時間中午12:00前，先辦好退房、行李放車上，吃完早午餐就不用再繞回市區了。
+        </div></div>
+      </div>
+    </div>
+
+    <div class="section-note">早午餐・已經決定了 🎉</div>
+    <div class="confirm-card">
+      <div class="icon">🥪</div>
+      <div>
+        <span class="tag">CONFIRMED</span>
+        <h3>Nose man 鼻孔先生手作早午餐</h3>
+        <p>候位制，最後內用時間 13:30，11點左右到應該不用等太久。吃完直接往下一站，時間抓得剛剛好。</p>
+        <a class="map-link" href="https://www.google.com/maps/place/Nose+man%E9%BC%BB%E5%AD%94%E5%85%88%E7%94%9F%E6%89%8B%E4%BD%9C%E6%97%A9%E5%8D%88%E9%A4%90(%E5%83%85%E7%8F%BE%E5%A0%B4%E5%80%99%E4%BD%8D%EF%BC%9B%E6%9C%80%E5%BE%8C%E5%85%A7%E7%94%A8%E6%99%82%E9%96%93%E7%82%BA13:30%EF%BC%89/data=!4m2!3m1!1s0x346e977ab8b10ded:0x71a675de7363210f" target="_blank" rel="noopener">📍 在 Google 地圖開啟</a>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">12:30</span>
+          <span class="emoji">🌊</span>
+          <span class="title">蘭潭風景區・月影潭心</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          吃飽散散步，藝術家王文志的鋁編裝置作品「月影潭心」浮在潭水上，很適合拍照。開車約10分鐘可達。
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E8%98%AD%E6%BD%AD%E9%A2%A8%E6%99%AF%E5%8D%80%20%E6%9C%88%E5%BD%B1%E6%BD%AD%E5%BF%83" target="_blank" rel="noopener">📍 蘭潭風景區</a>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="section-note">如果 brunch 沒吃飽，路上還有這些口袋名單</div>
+    <div class="food-block" data-key="d2extra">
+      <div class="food-block-head">
+        <h4>🍚 備用・雞肉飯候選</h4>
+        <span class="food-counter mono">已選 0</span>
+      </div>
+      <div class="chip-row">
+        <div class="chip"><span class="heart">❤️</span>阿樓師火雞肉飯<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E9%98%BF%E6%A8%93%E5%B8%AB%E7%81%AB%E9%9B%9E%E8%82%89%E9%A3%AF/data=!4m2!3m1!1s0x346e9436d6da81cf:0x4692dbbba8a8dfef">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>阿宏師火雞肉飯・光華總店<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E9%98%BF%E5%AE%8F%E5%B8%AB%E7%81%AB%E9%9B%9E%E8%82%89%E9%A3%AF-%E5%85%89%E8%8F%AF%E7%B8%BD%E5%BA%97/data=!4m2!3m1!1s0x346e9425875f02e7:0xb85b2f1814e1f01b">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>東門雞肉飯・和平店<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E6%9D%B1%E9%96%80%E9%9B%9E%E8%82%89%E9%A3%AF+%E5%92%8C%E5%B9%B3%E5%BA%97/data=!4m2!3m1!1s0x346e9449849e7de1:0xbfdab788883e2c99">📍</a></div>
+        <div class="chip"><span class="heart">❤️</span>東門雞肉飯・新民店<a class="pin" target="_blank" rel="noopener" href="https://www.google.com/maps/place/%E6%9D%B1%E9%96%80%E9%9B%9E%E8%82%89%E9%A3%AF(%E6%96%B0%E6%B0%91%E5%BA%97%EF%BC%89/data=!4m2!3m1!1s0x346e942134d04709:0x2288b1d2b13c3d50">📍</a></div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">13:30</span>
+          <span class="emoji">🖼️</span>
+          <span class="title">花磚博物館 / 嘉義市立美術館</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          時間充裕的話可以順路走文青路線，逛逛老屋改建的花磚博物館或美術館，買點伴手禮。
+          <a class="map-link" href="https://www.google.com/maps/place/%E8%87%BA%E7%81%A3%E8%8A%B1%E7%A3%9A%E5%8D%9A%E7%89%A9%E9%A4%A8/data=!4m2!3m1!1s0x346e942d990e4e25:0x1c01fd9fa34f3582" target="_blank" rel="noopener">📍 臺灣花磚博物館</a>
+        </div></div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">15:00</span>
+          <span class="emoji">🚗</span>
+          <span class="title">出發前往東石漁人碼頭</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          嘉義市區開車約40–50分鐘。今天是「2026東石海之夏」活動最後一天，晚點人潮會多，建議提早出發、找好停車位，順便逛逛漁港市集。
+          <div class="tip">🅿️ 提醒：7/26 上午10點前該區禁止用腳架、野餐墊等物品佔位，但傍晚人潮仍會很多，抵達後建議先找定點再去逛市集。</div>
+        </div></div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">16:00</span>
+          <span class="emoji">🎪</span>
+          <span class="title">東石漁人碼頭・市集 &amp; 海邊散步</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          會場有美食市集、親子互動與免費演唱表演，找間海邊小吃攤點些東西邊吃邊等天黑。最佳觀賞點：舞風草坪、觀海三路、大船入港觀景台。
+        </div></div>
+      </div>
+    </div>
+
+    <!-- FIREWORKS HIGHLIGHT -->
+    <div class="fire-card">
+      <span class="ring"></span>
+      <span class="ring d2"></span>
+      <div class="glow"></div>
+      <span class="badge">2026 東石海之夏・壓軸場</span>
+      <h3>海上高空煙火秀</h3>
+      <div class="time-big mono">19:30</div>
+      <p>約 12 分鐘、規劃施放 1.8 萬發煙火（含 6 顆 16 吋高空煙火），在東石漁人碼頭上空點亮嘉義的海。</p>
+      <div class="facts">
+        <span>📍 嘉義縣東石漁人碼頭</span>
+        <span>⏱️ 施放約 12 分鐘</span>
+        <span>🎆 約 1.8 萬發</span>
+      </div>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E7%9F%B3%E6%BC%81%E4%BA%BA%E7%A2%BC%E9%A0%AD" target="_blank" rel="noopener">📍 在 Google 地圖開啟</a>
+      <div class="note">小提醒：搜尋資料顯示這天嘉義最大的煙火活動其實是嘉義縣「東石」的東石海之夏，日期跟時間剛好對上你們 7/26 晚上，我猜你可能是想講「東石」而不是屏東的「東港」（兩地距離很遠）。如果真的是要去屏東東港，要抓至少 2 小時車程，行程需要整個重排，跟我說一聲我再幫你改 🙏</div>
+    </div>
+
+    <div class="timeline" style="margin-top:20px;">
+      <div class="stop">
+        <div class="stop-header">
+          <span class="time mono">20:00</span>
+          <span class="emoji">🚙</span>
+          <span class="title">賦歸</span>
+          <span class="chev">⌄</span>
+        </div>
+        <div class="stop-body"><div class="stop-body-inner">
+          煙火結束後現場會湧出大量人潮跟車潮，建議不要急著馬上走，先在附近逛一下、等車潮散一點再上路會輕鬆很多。
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="info-card">
+    <h4>🧭 行前提醒</h4>
+    <ul>
+      <li>葉綠宿沒訂到車位，Day 1 開頭已經附上三個備案停車場，抵達後可以先去停車再走回飯店辦入住。</li>
+      <li>東石海之夏 7/26 為活動最後一天、也是唯一的煙火場次，現場人潮跟交通會比較擁擠，抓寬裕一點的時間出發。</li>
+      <li>7 月嘉義白天氣溫高，檜意森活村、蘭潭都是戶外行程，記得防曬帶水。</li>
+      <li>晚上煙火會有大量人潮同時散場，建議車停遠一點、走路換取不塞車。</li>
+    </ul>
+  </div>
+  <div class="info-card">
+    <h4>📎 這次沒排進去的收藏</h4>
+    <ul>
+      <li><b>餓八來秋（高雄鹽埕店）</b>：你收藏清單裡有這家，但地點在高雄鹽埕，離嘉義市區有點距離，這次先沒排進行程。如果你們想順路安排，跟我說我再幫你調整動線。</li>
+    </ul>
+  </div>
+  <p class="credit">嘉義。兩天一夜 · 為了你們的假期做的小小行程表 🌲🎆</p>
+</footer>
+
+<button class="fab" id="fabBtn" title="回到頂部">↑</button>
+
+<script>
+(function(){
+  // ---- Day tabs (glide pill) ----
+  const tabs = document.querySelectorAll('.day-tabs button');
+  const pill = document.getElementById('tabPill');
+  const panels = { day1: document.getElementById('day1'), day2: document.getElementById('day2') };
+
+  function positionPill(btn){
+    pill.style.width = btn.offsetWidth + 'px';
+    pill.style.left = btn.offsetLeft + 'px';
+  }
+
+  function activate(day, btn){
+    Object.values(panels).forEach(p => p.classList.remove('active'));
+    panels[day].classList.add('active');
+    tabs.forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    positionPill(btn);
+    revealInPanel(panels[day]);
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => activate(btn.dataset.day, btn));
+  });
+
+  window.addEventListener('load', () => positionPill(document.querySelector('.day-tabs button.active')));
+  window.addEventListener('resize', () => positionPill(document.querySelector('.day-tabs button.active')));
+
+  // ---- Expandable stops ----
+  document.querySelectorAll('.stop-header').forEach(header => {
+    header.addEventListener('click', () => {
+      header.parentElement.classList.toggle('open');
+    });
+  });
+
+  // ---- Food chips ----
+  document.querySelectorAll('.food-block').forEach(block => {
+    const counter = block.querySelector('.food-counter');
+    const chips = block.querySelectorAll('.chip');
+    chips.forEach(chip => {
+      const pin = chip.querySelector('.pin');
+      if(pin){ pin.addEventListener('click', (e) => e.stopPropagation()); }
+      chip.addEventListener('click', () => {
+        chip.classList.toggle('on');
+        chip.classList.add('pop');
+        setTimeout(() => chip.classList.remove('pop'), 300);
+        const n = block.querySelectorAll('.chip.on').length;
+        counter.textContent = '已選 ' + n;
+        counter.classList.add('bump');
+        setTimeout(() => counter.classList.remove('bump'), 300);
+      });
+    });
+  });
+
+  // ---- Stagger entrance on scroll ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if(entry.isIntersecting){
+        const items = entry.target.parentElement.querySelectorAll('.stop, .stay-card, .confirm-card, .park-item');
+        let i = 0;
+        items.forEach(item => {
+          if(!item.classList.contains('in')){
+            setTimeout(() => item.classList.add('in'), i * 90);
+            i++;
+          }
+        });
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  function revealInPanel(panel){
+    panel.querySelectorAll('.stop, .stay-card, .confirm-card, .park-item').forEach((item, i) => {
+      setTimeout(() => item.classList.add('in'), i * 70);
+    });
+  }
+  revealInPanel(panels.day1);
+
+  document.querySelectorAll('.timeline, .stay-card, .confirm-card, .park-card').forEach(el => io.observe(el));
+
+  // ---- FAB scroll top ----
+  document.getElementById('fabBtn').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>
