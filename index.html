@@ -118,6 +118,19 @@ a{ color:inherit; }
 }
 .ticket-strip .value{ font-family:'JetBrains Mono',monospace; font-weight:700; font-size:1.05rem; color:var(--wood-dark); }
 
+.trip-song{
+  max-width:640px; margin:18px auto 0;
+  opacity:0; transform:translateY(14px);
+  animation: rise .6s var(--glide) .3s forwards;
+}
+.trip-song .song-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.72rem; letter-spacing:0.14em;
+  color:var(--ink-soft); text-transform:uppercase;
+  margin-bottom:10px;
+}
+.trip-song iframe{ display:block; width:100%; }
+
 /* ---------- DAY TABS (glide pill) ---------- */
 .day-nav-wrap{
   position:sticky; top:0; z-index:50;
@@ -540,6 +553,11 @@ footer{
       <div class="label">住宿</div>
       <div class="value" style="font-size:0.92rem;">葉綠宿．漫漫回嘉</div>
     </div>
+  </div>
+
+  <div class="trip-song">
+    <div class="song-label">🎵 旅程主題曲</div>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4IouQaO9GkaHC7AtMErdSa?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
 </header>
 
