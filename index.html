@@ -509,8 +509,13 @@ footer{
 
 @media (max-width:480px){
   .hero{ padding:48px 16px 40px; }
-  .ticket-strip{ flex-direction:column; }
-  .ticket-strip .seg + .seg{ border-left:none; border-top:1.5px dashed var(--line); }
+  .ticket-strip{ display:grid; grid-template-columns:1fr 1fr; }
+  /* reset desktop dividers */
+  .ticket-strip .seg + .seg{ border-left:none; }
+  /* 出發 | 賦歸 並排，中間直的虛線分隔 */
+  .ticket-strip .seg:nth-child(2){ border-left:1.5px dashed var(--line); }
+  /* 住宿 獨佔一整行，上方橫的虛線分隔 */
+  .ticket-strip .seg:nth-child(3){ grid-column:1 / -1; border-top:1.5px dashed var(--line); }
   .food-block{ margin-left:14px; padding:14px; }
   .timeline{ padding-left:20px; }
 }
@@ -902,7 +907,7 @@ footer{
 </main>
 
 <footer>
-  <p class="credit">嘉義。兩天一夜 · 為了你們的假期做的小小行程表 🌲🎆</p>
+  <p class="credit">嘉義。兩天一夜</p>
 </footer>
 
 <button class="fab" id="fabBtn" title="回到頂部">↑</button>
